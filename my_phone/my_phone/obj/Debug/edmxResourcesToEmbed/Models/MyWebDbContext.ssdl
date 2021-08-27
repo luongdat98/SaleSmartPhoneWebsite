@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_web_aspModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="auth">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_id" Type="int" />
+    <Property Name="menu_id" Type="int" />
+    <Property Name="permission" Type="int" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" Nullable="false" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="code" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="text" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" Nullable="false" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="color">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" Nullable="false" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="invoice">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="name_user" Type="varchar" MaxLength="255" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
+    <Property Name="address" Type="varchar" MaxLength="255" />
+    <Property Name="payment" Type="int" />
+    <Property Name="total_price" Type="decimal" Precision="20" Scale="0" />
+    <Property Name="status" Type="int" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="invoicedetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="invoice_id" Type="int" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="price" Type="decimal" Precision="20" Scale="1" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="parent_id" Type="int" />
+    <Property Name="url" Type="varchar" MaxLength="255" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="order_index" Type="int" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" Nullable="false" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_id" Type="int" />
+    <Property Name="brand_id" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="code" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="price" Type="decimal" Precision="20" Scale="1" />
+    <Property Name="image_url" Type="varchar" MaxLength="255" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="productdetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="color_id" Type="int" />
+    <Property Name="price" Type="decimal" Precision="20" Scale="1" />
+    <Property Name="img_url" Type="varchar" MaxLength="255" />
+    <Property Name="screen" Type="varchar" MaxLength="255" />
+    <Property Name="oper_sys" Type="varchar" MaxLength="255" />
+    <Property Name="rear_camera" Type="varchar" MaxLength="255" />
+    <Property Name="front_camera" Type="varchar" MaxLength="255" />
+    <Property Name="cpu" Type="varchar" MaxLength="255" />
+    <Property Name="ram" Type="varchar" MaxLength="255" />
+    <Property Name="cart_sim" Type="varchar" MaxLength="255" />
+    <Property Name="internal_memory" Type="varchar" MaxLength="255" />
+    <Property Name="battery_capacity" Type="varchar" MaxLength="255" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" Nullable="false" />
+    <Property Name="update_date" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_role" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="user_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="role_id" Type="int" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="255" />
+    <Property Name="password" Type="varchar" MaxLength="255" />
+    <Property Name="fullname" Type="varchar" MaxLength="255" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="address" Type="varchar" MaxLength="255" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
+    <Property Name="active" Type="int" />
+    <Property Name="create_date" Type="timestamp" Precision="0" />
+    <Property Name="update_date" Type="timestamp" Precision="0" />
+  </EntityType>
+  <Association Name="auth_ibfk_1">
+    <End Role="role" Type="Self.role" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="auth" Type="Self.auth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="auth">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="auth_ibfk_2">
+    <End Role="menu" Type="Self.menu" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="auth" Type="Self.auth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="auth">
+        <PropertyRef Name="menu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="invoice_ibfk_1">
+    <End Role="users" Type="Self.users" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="invoice" Type="Self.invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="invoice">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="invoicedetail_ibfk_1">
+    <End Role="invoice" Type="Self.invoice" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="invoicedetail" Type="Self.invoicedetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="invoice">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="invoicedetail">
+        <PropertyRef Name="invoice_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="invoicedetail_ibfk_2">
+    <End Role="product" Type="Self.product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="invoicedetail" Type="Self.invoicedetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="invoicedetail">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="product_ibfk_1">
+    <End Role="category" Type="Self.category" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="product_ibfk_2">
+    <End Role="brand" Type="Self.brand" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="brand">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="brand_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="productdetail_ibfk_1">
+    <End Role="product" Type="Self.product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="productdetail" Type="Self.productdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="productdetail">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="productdetail_ibfk_2">
+    <End Role="color" Type="Self.color" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="productdetail" Type="Self.productdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="color">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="productdetail">
+        <PropertyRef Name="color_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_role_ibfk_1">
+    <End Role="users" Type="Self.users" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="user_role" Type="Self.user_role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_role">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_role_ibfk_2">
+    <End Role="role" Type="Self.role" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="user_role" Type="Self.user_role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_role">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_web_aspModelStoreContainer">
+    <EntitySet Name="auth" EntityType="Self.auth" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="brand" EntityType="Self.brand" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="color" EntityType="Self.color" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="invoice" EntityType="Self.invoice" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="invoicedetail" EntityType="Self.invoicedetail" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="menu" EntityType="Self.menu" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="productdetail" EntityType="Self.productdetail" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="role" EntityType="Self.role" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="user_role" EntityType="Self.user_role" Schema="db_web_asp" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="db_web_asp" store:Type="Tables" />
+    <AssociationSet Name="auth_ibfk_1" Association="Self.auth_ibfk_1">
+      <End Role="role" EntitySet="role" />
+      <End Role="auth" EntitySet="auth" />
+    </AssociationSet>
+    <AssociationSet Name="auth_ibfk_2" Association="Self.auth_ibfk_2">
+      <End Role="menu" EntitySet="menu" />
+      <End Role="auth" EntitySet="auth" />
+    </AssociationSet>
+    <AssociationSet Name="invoice_ibfk_1" Association="Self.invoice_ibfk_1">
+      <End Role="users" EntitySet="users" />
+      <End Role="invoice" EntitySet="invoice" />
+    </AssociationSet>
+    <AssociationSet Name="invoicedetail_ibfk_1" Association="Self.invoicedetail_ibfk_1">
+      <End Role="invoice" EntitySet="invoice" />
+      <End Role="invoicedetail" EntitySet="invoicedetail" />
+    </AssociationSet>
+    <AssociationSet Name="invoicedetail_ibfk_2" Association="Self.invoicedetail_ibfk_2">
+      <End Role="product" EntitySet="product" />
+      <End Role="invoicedetail" EntitySet="invoicedetail" />
+    </AssociationSet>
+    <AssociationSet Name="product_ibfk_1" Association="Self.product_ibfk_1">
+      <End Role="category" EntitySet="category" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="product_ibfk_2" Association="Self.product_ibfk_2">
+      <End Role="brand" EntitySet="brand" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="productdetail_ibfk_1" Association="Self.productdetail_ibfk_1">
+      <End Role="product" EntitySet="product" />
+      <End Role="productdetail" EntitySet="productdetail" />
+    </AssociationSet>
+    <AssociationSet Name="productdetail_ibfk_2" Association="Self.productdetail_ibfk_2">
+      <End Role="color" EntitySet="color" />
+      <End Role="productdetail" EntitySet="productdetail" />
+    </AssociationSet>
+    <AssociationSet Name="user_role_ibfk_1" Association="Self.user_role_ibfk_1">
+      <End Role="users" EntitySet="users" />
+      <End Role="user_role" EntitySet="user_role" />
+    </AssociationSet>
+    <AssociationSet Name="user_role_ibfk_2" Association="Self.user_role_ibfk_2">
+      <End Role="role" EntitySet="role" />
+      <End Role="user_role" EntitySet="user_role" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

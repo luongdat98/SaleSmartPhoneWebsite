@@ -1,0 +1,79 @@
+﻿@model IEnumerable<my_phone.ViewModel.ShoppingViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<script type="text/javascript">
+    function AddToCart(item) {
+        var itemId = $(item).attr("itemid");        
+        var formData = new FormData();
+        formData.append("ItemId", itemid);
+        $.ajax({
+            async: true,
+            type: 'POST',
+            contentType: false,
+            processData: false,
+            data: formData,
+            url: '/Shopping/Index',
+            success: function (data) {
+
+            },
+            error: function () {
+                alert("There is some problem");
+            }
+        });
+    }
+
+</script>
+<section id="bestsellers" class="color-bg wow fadeInUp">
+    <div class="container">
+        <h1 class="section-title">Best Sellers</h1>
+
+        <div class="product-grid-holder medium">
+            <div class="col-xs-12 col-md-12 no-margin">
+
+                <div class="row no-margin">
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-xs-12 col-sm-4 no-margin product-item-holder size-medium hover" style="max-width: 290px;">
+
+                            <div class="product-item">
+                                <div class="image">
+                                    <img src="~/Images/admin/@product.ImagePath" />
+                                </div>
+                                <div class="body">
+                                    <div class="label-discount clear"></div>
+                                    <div class="title">
+                                        @*@Html.ActionLink("Product", "SingleProduct", new { id = product.id })
+                                            <span> @product.name</span> *@
+                                        <a href="@Url.Action("SingleProduct","Client", new { id = product.ItemId })">@product.ItemName</a>
+                                    </div>
+                                    <div class="brand"></div>
+                                </div>
+                                <div class="prices">
+
+                                    <div class="price-current text-right">@product.ItemPrice</div>
+                                </div>
+                                <div class="hover-area">
+                                    <div class="add-cart-button">
+                                        <a href="/addcart?productId=@product.ItemId&quantity=1" class="le-button">Add to cart</a>
+                                        <input type="button" name="AddToCart" value="Add To Cart" class="le-button" itemid="@product.ItemId" id="btnAddToCart" onclick="AddToCart(this)" />
+                                    </div>
+                                    <div class="wish-compare">
+                                        <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>
+                                        <a class="btn-add-to-compare" href="#">Compare</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div><!-- /.product-item-holder -->
+                    }
+
+                </div><!-- /.row -->
+            </div><!-- /.col -->
+
+
+        </div><!-- /.product-grid-holder -->
+    </div><!-- /.container -->
+</section><!-- /#bestsellers -->
